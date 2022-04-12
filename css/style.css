@@ -35,3 +35,163 @@ body {
     background-position: top;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    /* This allows us to center the el inside the parent. top and left shift the children 50%... So that the top left border of the el are in the center. Transform then moves the box so that the middle of that el is where top and left have positioned them   */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary {
+    color: white;
+    text-transform: uppercase;
+    /* Trick for fixing the shaking of animations */
+    backface-visibility: hidden;
+    margin-bottom: 30px;
+}
+
+.heading-primary-main {
+    /* Block will allow the el to take up the entire width inside the parent el */
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    /* Animation */
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    /* Animation */
+    animation-name: moveInRight;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+}
+
+
+/* For perfomance it is best to only alter 2 properties */
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    70% {
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    70% {
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Adding link sudo class, styles elements under a special situation 
+Link: matches links that have not been visited, visited: link that has been visited. */
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 15px;
+    /* sets the time and creates a smooth transition between states */
+    transition: all .2s;
+    position: relative;
+}
+
+
+/* Button moves up when you hover */
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .20);
+}
+
+
+/* When clicked button gets pushed down, its in relation to the original state of the button, so it appears the button is getting pushed down even though we are actually setting the button to move up 1px */
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .20);
+}
+
+.btn-white {
+    color: #777;
+    background-color: white;
+}
+
+.btn::after {
+    /* Content is always neccessary when using an after suedo element */
+    content: "";
+    display: inline-block;
+    /* This will have the same dimensions of the parent (button) */
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    /* transform: scale(); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: white;
+}
+
+.btn:hover::after {
+    transform: scalex(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 1.5s ease-out .65s;
+    /* Will set style of the button before the animation starts to 0% */
+    animation-fill-mode: backwards;
+}
