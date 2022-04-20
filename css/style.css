@@ -49,17 +49,17 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
     /* This allows us to center the el inside the parent. top and left shift the children 50%... So that the top left border of the el are in the center. Transform then moves the box so that the middle of that el is where top and left have positioned them   */
     position: absolute;
     top: 40%;
@@ -76,7 +76,7 @@ body {
     margin-bottom: 3rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     /* Block will allow the el to take up the entire width inside the parent el */
     display: block;
     font-size: 6rem;
@@ -88,7 +88,7 @@ body {
     animation-timing-function: ease-in-out;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -174,7 +174,7 @@ Link: matches links that have not been visited, visited: link that has been visi
     box-shadow: 0 .5rem 1.5rem 0 rgba(0, 0, 0, .20);
 }
 
-.btn-white {
+.btn--white {
     color: #777;
     background-color: white;
 }
@@ -195,7 +195,7 @@ Link: matches links that have not been visited, visited: link that has been visi
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: white;
 }
 
